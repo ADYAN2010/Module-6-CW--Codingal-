@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Numbers Generator</title>
+</head>
+<body>
+
+<h2>Generate Random Numbers</h2>
+
+<label>How many numbers?</label>
+<input type="number" id="count" placeholder="e.g. 5">
+<button onclick="generate()">Generate</button>
+
+<ul id="output"></ul>
+
+<script>
+  function generate() {
+    let howMany = document.getElementById("count").value;
+    let list = document.getElementById("output");
+    list.innerHTML = "";
+
+    for (let i = 0; i < howMany; i++) {
+      let randomNum = Math.floor(Math.random() * 100); // 0 to 99
+      let item = document.createElement("li");
+      item.innerText = randomNum;
+      list.appendChild(item);
+    }
+  }
+</script>
+
+</body>
+</html>
