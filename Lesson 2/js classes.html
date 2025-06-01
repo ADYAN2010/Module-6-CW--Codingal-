@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - Developer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .role {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .malware {
+      border-left: 5px solid #e74c3c;
+    }
+    .backend {
+      border-left: 5px solid #4caf50;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hi, I'am ADYAN. I'am a Developer 👨‍💻</h1>
+  
+  <div id="roles"></div>
+
+  <script>
+    class Role {
+      constructor(title, description, category) {
+        this.title = title;
+        this.description = description;
+        this.category = category;
+      }
+
+      render() {
+        const categoryClass = this.category === 'malware' ? 'malware' : 'backend';
+        return `
+          <div class="role ${categoryClass}">
+            <h2>${this.title}</h2>
+            <p>${this.description}</p>
+          </div>
+        `;
+      }
+    }
+
+    class Developer {
+      constructor(name) {
+        this.name = name;
+        this.roles = [];
+      }
+
+      addRole(role) {
+        this.roles.push(role);
+      }
+
+      renderRoles() {
+        return this.roles.map(role => role.render()).join('');
+      }
+    }
+
+    // Creating a Developer instance
+    const myProfile = new Developer("John Doe");
+
+    // Adding roles
+    myProfile.addRole(new Role("💼 Backend Developer", "I design and implement server-side logic, build APIs, and manage databases.", 'backend'));
+    myProfile.addRole(new Role("🧪 Part-Time Malware Developer", "I research malware and create cybersecurity tools for educational purposes.", 'malware'));
+
+    // Rendering the roles
+    document.getElementById("roles").innerHTML = myProfile.renderRoles();
+  </script>
+</body>
+</html>
