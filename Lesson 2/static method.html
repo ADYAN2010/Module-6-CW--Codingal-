@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Developer Roles - Static Method Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      border-left: 6px solid gray;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .backend { border-left-color: #4caf50; }
+    .malware { border-left-color: #e53935; }
+    .note {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>👨‍💻 Developer Roles (with Static Method)</h1>
+  <div id="roles"></div>
+  <div class="note" id="count"></div>
+
+  <script>
+    class Role {
+      constructor(title, description) {
+        this.title = title;
+        this.description = description;
+        // Increase count every time a Role (or subclass) is created
+        Role.totalRoles = (Role.totalRoles || 0) + 1;
+      }
+
+      render(className) {
+        return `
+          <div class="card ${className}">
+            <h2>${this.title}</h2>
+            <p>${this.description}</p>
+          </div>
+        `;
+      }
+
+      // This is a static method - it belongs to the class, not the object
+      static countRoles() {
+        return Role.totalRoles || 0;
+      }
+    }
+
+    class BackendDeveloper extends Role {
+      constructor() {
+        super("💼 Backend Developer", "I build APIs, manage databases, and handle server-side logic.");
+      }
+
+      render() {
+        return super.render("backend");
+      }
+    }
+
+    class MalwareDeveloper extends Role {
+      constructor() {
+        super("🧪 Part-Time Malware Developer", "I explore malware and make tools for learning and cybersecurity research.");
+      }
+
+      render() {
+        return super.render("malware");
+      }
+    }
+
+    // Create instances
+    const roles = [
+      new BackendDeveloper(),
+      new MalwareDeveloper()
+    ];
+
+    // Render roles
+    document.getElementById("roles").innerHTML = roles.map(role => role.render()).join('');
+
+    // I used static method to show roles
+    document.getElementById("count").innerText = `🔢 Total Roles Created: ${Role.countRoles()}`;
+
+
+//Defination:
+    // Static methods in a JavaScript class are methods that belong to the class itself, not to instances of the class. I define them using the static keyword.
+    // They are used for utility or helper functions related to the clas, not to a specific object
+    // Key Points
+    // Called on the class, not on an object
+    // Cannot access instance properties directly
+    // Useful for general-purpose tasks
+
+  </script>
+</body>
+</html>

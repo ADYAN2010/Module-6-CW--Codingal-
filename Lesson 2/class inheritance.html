@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Developer Roles - Inheritance </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+      color: #333;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      border-left: 6px solid gray;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .backend { border-left-color: #4caf50; }
+    .malware { border-left-color: #e53935; }
+  </style>
+</head>
+<body>
+
+  <h1>👨‍💻 Developer Roles (with Class Inheritance)</h1>
+  <div id="roles"></div>
+
+  <script>
+    // This is the base Role class – all other roles will inherit from this
+    class Role {
+      constructor(title, description) {
+        this.title = title;
+        this.description = description;
+      }
+
+      // A simple method to render the role info as HTML
+      render(className) {
+        return `
+          <div class="card ${className}">
+            <h2>${this.title}</h2>
+            <p>${this.description}</p>
+          </div>
+        `;
+      }
+    }
+
+    // BackendDeveloper inherits from Role
+    class BackendDeveloper extends Role {
+      constructor() {
+        // super() calls the constructor of the Role class
+        super("💼 Backend Developer", "I build APIs, manage databases, and handle server-side logic.");
+      }
+
+      // We reuse the render method from the parent, but pass a custom class name
+      render() {
+        return super.render("backend");
+      }
+    }
+
+    // MalwareDeveloper also inherits from Role
+    class MalwareDeveloper extends Role {
+      constructor() {
+        // Again, calling the parent class constructor with specific info
+        super("🧪 Part-Time Malware Developer", "I explore malware and make tools for learning and cybersecurity research.");
+      }
+
+      // Same thing — override the render method to style it differently
+      render() {
+        return super.render("malware");
+      }
+    }
+
+    // Now we create our developer's roles using the subclasses
+    const roles = [
+      new BackendDeveloper(),
+      new MalwareDeveloper()
+    ];
+
+    // Render them all on the page
+    document.getElementById("roles").innerHTML = roles.map(role => role.render()).join('');
+
+//DEFINATION: 
+    // Class inheritance in JavaScript means creating a new class that takes properties and methods from an existing class. 
+    // The new class is called a child or subclass, and the existing class is called a parent or superclass.
+ 
+  </script>
+</body>
+</html>
+
+
