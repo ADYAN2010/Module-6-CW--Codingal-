@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="f()">Generate & Sort</button>
+<p id="o"></p>
+
+<script>
+function f() {
+  let arr = Array.from({length: 5}, () => Math.floor(Math.random() * 100));
+  o.innerText = "Sorted & Reversed: " + arr.sort((a,b)=>a-b).reverse().join(", ");
+}
+</script>
+
+</body>
+</html>
