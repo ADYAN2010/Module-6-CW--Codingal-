@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Callback Function Example</h2>
+    <p id="result"></p>
+
+    <script>
+      function greet(name, callback) {
+        let message = "Hello, " + name;
+        callback(message);
+      }
+
+      function display(text) {
+        document.getElementById("result").innerHTML = text;
+      }
+
+      greet("Adyan", display);
+    </script>
+  </body>
+</html>
