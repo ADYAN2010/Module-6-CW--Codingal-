@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>JavaScript Promise Example</h2>
+    <p id="result">Waiting...</p>
+
+    <script>
+      let task = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          resolve("Promise Completed!");
+        }, 2000);
+      });
+
+      task.then(function(value) {
+        document.getElementById("result").innerHTML = value;
+      });
+    </script>
+  </body>
+</html>
