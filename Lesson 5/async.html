@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Async / Await with Delay</h2>
+    <h1 id="result">Waiting...</h1>
+
+    <script>
+      async function showMessage() {
+        let msg = await waitAndReturn("Hello from async after 2 seconds!");
+        document.getElementById("result").innerHTML = msg;
+      }
+
+      function waitAndReturn(text) {
+        return new Promise(resolve => {
+          setTimeout(() => resolve(text), 2000);
+        });
+      }
+
+      showMessage();
+    </script>
+  </body>
+</html>
