@@ -10,16 +10,16 @@
 <p id="message"></p>
 
 <script>
-  // This function runs when the button is clicked
+ 
   function checkNumber() {
-    let input = document.getElementById("numInput"); // Get the input element
-    let message = document.getElementById("message"); // Get the paragraph to show result
+    let input = document.getElementById("numInput"); 
+    let message = document.getElementById("message"); 
 
-    // If the number is invalid (like empty or outside range), show the browser's error message
+    
     if (!input.checkValidity()) {
-      message.innerHTML = input.validationMessage; // Shows why the input is invalid
+      message.innerHTML = input.validationMessage; 
     } else {
-      message.innerHTML = "Number is valid ✅"; // Success message
+      message.innerHTML = "Number is valid ✅"; 
     }
   }
 </script>
